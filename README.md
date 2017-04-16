@@ -13,6 +13,8 @@ BlueTrack is a bluetooth based tracking system. It does not require actively par
 ### Requirements ###
 BlueTrack requires a device with the following:
 
+ - Python 3+
+ - tkinter library
  - [The PyBluez Bluetooth Library by Karulis](https://github.com/karulis/pybluez)
  - The default Python SQLite3 library.
 
