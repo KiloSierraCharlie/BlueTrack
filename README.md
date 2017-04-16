@@ -41,4 +41,14 @@ configuration = [
 ]
 ```
 
+### Adding a new device ###
+To add a new device to the system, simply make it discover-able, until the system reports to you that the device is in-range. The device will then be tracked, even when not in discover-able state.
+
+### Removing a device ###
+To remove a device, you need to manually enter the SQLite database file, and remove the necessary row. You may wish to also remove the logs to do with that device.
+
+### Setting a device owner ###
+To set a device owner, you'll need to manually enter the SQLite database file, and set the owner's details.
+
 **Apart from that, have fun!**
+
