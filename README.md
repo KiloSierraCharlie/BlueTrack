@@ -24,7 +24,7 @@ git clone https://github.com/KiloSierraCharlie/BlueTrack.git
 ```
 
 ```
-   configuration = [
+configuration = [
 
   # Polling time (How often, in seconds, do you want to check who is around?)
   
