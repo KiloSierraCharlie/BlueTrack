@@ -4,12 +4,13 @@ from time import strftime, time, sleep
 import sqlite3 as sql
 from sys import exit
 from json import dumps
-
+import deviceHunter
+from threading import Thread
 configuration = [
 
   # Polling time (How often, in seconds, do you want to check who is around?)
   
-  10,
+  3,
   
   # Polling timeout (How long do you want the script to wait before declaring a device out-of-area?)
   
@@ -34,7 +35,14 @@ except sql.Error as Err:
   print( Err )
   
   exit( 1 )
-   
+
+Hunter = deviceHunter.DeviceHunter()
+newDeviceThread = Thread( target=Hunter.hunt )
+
+newDeviceThread.daemon = True
+
+newDeviceThread.start()
+
 while True:
 
     try:
@@ -57,9 +65,9 @@ while True:
               
               jsonLog = dumps( [ time(), configuration[ 2 ] ] )             
 
-              Cursor.execute( "UPDATE `devices` SET `lastseen`=? WHERE `macaddr`=?", ( jsonLog, device[ 0 ], ) )
+              Cursor.execute( "UPDATE `devices` SET `lastseen`=? WHERE `macaddr`=?;", ( jsonLog, device[ 0 ], ) )
               
-              Cursor.execute( "INSERT into `seenlog` ( `time`, `macaddr`, `nodeid` ) VALUES ( ?, ?, ? )", ( time(), device[ 0 ], configuration[ 2 ], ) )
+              Cursor.execute( "INSERT into `seenlog` ( `time`, `macaddr`, `nodeid` ) VALUES ( ?, ?, ? );", ( time(), device[ 0 ], configuration[ 2 ], ) )
 
               Database.commit()
 
@@ -84,5 +92,5 @@ while True:
       print( Err )
       
       exit( 1 )
-      
+
     sleep( configuration[ 0 ] )
