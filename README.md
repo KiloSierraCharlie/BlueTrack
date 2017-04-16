@@ -1,5 +1,5 @@
 ## BlueTrack ##
-BlueTrack is a bluetooth based tracking system. It does not require actively participating users to have their bluetooth in a discoverable state, although it does require some prior-setup from them.
+BlueTrack is a bluetooth based tracking system. It does not require actively participating users to have their bluetooth in a discover-able state, although it does require some prior-setup from them.
 
 ----------
 
